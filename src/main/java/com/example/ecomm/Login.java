@@ -28,15 +28,20 @@ public class Login {
     }
     public static Customer customerLogin(String userEmail,String password){
         String encryptedPass = getEncryptedPassword(password);
+
        String query = "select * from customer where email = '"+ userEmail+ "' and password = '"+ encryptedPass + "'";
        DatabaseConnection dbConn = new DatabaseConnection();
        try{
             ResultSet rs = dbConn.getQueryTable(query);
-
+                 /*   rs.next();
+                    int cid= rs.getInt("cid");
+                   String name= rs.getString("name");
+                  String email = rs.getString("email");*/
        if (rs != null && rs.next()){
-           new Customer(rs.getInt("cid"),
+           Customer cust = new Customer(rs.getInt("cid"),
                    rs.getString("name"),
                    rs.getString("email"));
+           return cust;
        }
     } catch(Exception e){
            e.printStackTrace();

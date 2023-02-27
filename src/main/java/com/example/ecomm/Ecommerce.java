@@ -41,7 +41,7 @@ public class Ecommerce extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 bodyPane.getChildren().clear();
-                bodyPane.getChildren().add(productList.getAllProducts());
+               bodyPane.getChildren().add(productList.getAllProducts());
             }
         });
 
@@ -81,7 +81,7 @@ public class Ecommerce extends Application {
                     messageLabel.setText("Login Successful!!");
                     welcomeLabel.setText("welcome" +loggedInCustomer.getName());
                     bodyPane.getChildren().clear();
-                    bodyPane.getChildren().addAll(productList.getAllProducts());
+                    //bodyPane.getChildren().addAll(productList.getAllProducts());
                     //root.getChildren().clear();
                    // root.getChildren().addAll(headerBar(signOutButton), bodyPane, footerBar());
                 }
@@ -118,7 +118,7 @@ public class Ecommerce extends Application {
 
                 Product product = productList.getSelectProduct();
                 boolean orderStatus = false;
-                if (product != null && loggedInCustomer != null) {
+               if (product != null && loggedInCustomer != null) {
                     orderStatus = Order.placeOrder(loggedInCustomer, product);
                 }
                 if (orderStatus == true) {
@@ -152,8 +152,8 @@ public class Ecommerce extends Application {
         bodyPane.getChildren().add(loginPage());
 
         root.getChildren().addAll(headerBar(signInButton)
-                , loginPage()
-                , productList.getAllProducts()
+             //   , loginPage()
+         //       , productList.getAllProducts()
                 , bodyPane
                 , footerBar()
         );
